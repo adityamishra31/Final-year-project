@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+
+{% block css %}
+    <style>
+        
+        h2{
+          text-align: center;
+        }
+        footer {
+            margin-top: 10vw;
+        }
+
+        @media screen and (min-width: 768px) {
+            footer {
+                margin-top: 15vw;
+            }
+        }
+
+        @media screen and (min-width: 992px) {
+            footer {
+                margin-top: 20vw;
+            }
+        }
+    </style>
+{% endblock %}
+{% block body %}
+    <div class="container vh-100  " >
+        <div class="row justify-content-center">
+            <div class="col-sm-12 col-md-7" style="margin-top: 8rem;">
+                {% include "notification.html" %}
+                <div class="shadow-lg m-4  " >
+                    <div class="card-header">
+                        <div class="card-title"><h2>Register your account</h2></div>
+                    </div>
+                    <form method="POST" class="p-4">
+                        <div class="form-group">
+                          <label for="name">Your Name</label>
+                          <input type="text"
+                            class="form-control" name="name" id="name" aria-describedby="helpId" placeholder="">
+                          <small id="helpId" class="form-text text-muted">Full name</small>
+                        </div>
+                        <div class="form-group">
+                          <label for="email">email address</label>
+                          <input type="email"
+                            class="form-control" name="email" id="email" aria-describedby="emailHelp" placeholder="john@gamil.com">
+                          <small id="emailHelp" class="form-text text-muted">Enter a valid email address</small>
+                        </div>
+                        <div class="form-group">
+                          <label for="password">Password</label>
+                          <input type="password"
+                            class="form-control" name="password" id="password" aria-describedby="passhelpId" placeholder="min 6 chars">
+                          <small id="passhelpId" class="form-text text-muted">Enter a good password</small>
+                        </div>
+                        <div class="form-group">
+                          <label for="cpassword">Confirm Password</label>
+                          <input type="password"
+                            class="form-control" name="cpassword" id="cpassword" aria-describedby="cpasshelpId" placeholder="enter password again">
+                          <small id="cpasshelpId" class="form-text text-muted">re-enter password</small>
+                        </div>
+                        <button class="btn btn-success btn-block">Register</button>
+                    </form>
+                    <div class="text-center p-1">
+                      <p>already a member? <a href="/login">Login</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block js %}
+<script>
+      $(function () {
+        anime({
+  targets: '.container',
+  translateY: [
+    {value: -30, duration: 500},
+    {value: 0, duration: 800}
+  ],
+  delay: 100,
+  easing: 'easeInOutQuad'
+});
+
+
+      });
+</script>
+{% endblock %}
+
+
+
+
+
+
+

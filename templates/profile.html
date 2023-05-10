@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+{% block css %}
+<style>
+    .profile-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.profile-container img {
+ margin-top: 80px;
+    width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+
+.profile-container h1 {
+  font-size: 24px;
+  margin: 0;
+}
+
+.profile-container .job-title {
+  font-size: 18px;
+  margin-top: 5px;
+  margin-bottom: 20px;
+}
+
+.profile-container ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.profile-container li {
+  margin-bottom: 5px;
+}
+
+.profile-container li i {
+  margin-right: 5px;
+}
+
+.profile-container .bio {
+  font-size: 16px;
+  text-align: justify;
+}
+
+</style>
+
+{% endblock %}
+
+{% block body %}
+<div class="profile-container">
+    <img src="/static/images/man.png" alt="Profile Picture">
+    <h1>{{session['name']}}</h1>
+    <p class="job-title">You Joined Us On - {{ session['created_at']}}</p>
+    
+    <ul class="contact-info">
+      <li><i class="fas fa-envelope"></i>{{session['email']}}</li> <i class="bi bi-pen"></i>
+      <li><i class="fas fa-phone"></i> (123) 456-7890</li>
+      <li><i class="fas fa-globe"></i> www.johnsmith.com</li>
+    </ul>
+    <div class="form-inline">
+        <a href="#"><button type="button" class="btn btn-light">edit</button></a>
+        <a href="#"><button type="button" class="btn btn-success">Update</button></a>
+    </div>
+   </div>
+{% endblock  %}

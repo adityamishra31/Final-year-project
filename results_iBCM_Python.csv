@@ -1,0 +1,4 @@
+dataset,support,classifier,no_folds,reduce,no_features,accuracy,auc
+aslbu,0.1,Random forest,2,True,3064.5,0.5165094339622642,0.7321322011081169
+context,0.1,Random forest,2,True,5987.5,0.825,0.9803049589646464
+aslbu,0.1,Random forest,2,True,3064.5,0.5023584905660378,0.7354495057674144

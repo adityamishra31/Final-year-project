@@ -1,0 +1,219 @@
+<!-- b4-$ -->
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>{{title}}</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- fa5-$-css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css"
+        integrity="sha384-6wELaVWSpJ8U/7cIY3qUvxnLWJX6bFZm+4s49aOm+MJ6D1e19Qzvg6hYJSYJzDeG" crossorigin="anonymous">
+
+    <style>
+        /* Navbar styling */
+        body {
+            background-color: rgb(255, 255, 255);
+         
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+.navbar-brand{
+    font-size: 30px;
+    font-family:  'Brush Script MT', cursive;
+}
+        .navbar {
+             padding-left: 70px;
+             padding-right:70px;
+            z-index: 1;
+            background-color: #363232;
+            position: fixed;
+            top: 0;
+            width: 100%;
+        }
+
+        .nav-item {
+           
+            font-weight: bold;
+           padding-top: 13px;
+        }
+
+        #footer {
+
+            margin-top: 50%;
+        }
+    </style>
+
+    {% block css %}{% endblock %}
+</head>
+
+<body>
+    <!-- b4-nav-ul -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand font-weight-bold" href="#"><img height="80px"  width="80px" src="/static/images/brand4.png"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                {% if not session.isauth %}
+
+                <li class="nav-item ">
+                    <a class="nav-link" href="/home">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/about">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/contact">ContactUs</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        More
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#">Learn more</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Algorithm info</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Techniques</a>
+                    </div>
+                </li>
+                {% endif %}
+            </ul>
+
+
+
+            <div class="form-inline my-3 my-lg-0" >
+
+                {% if not session.isauth %}
+                <a class="nav-link glow" href="/login"><button class="btn btn-outline-success my-2 my-sm-0"
+                        type="submit">Login</button>
+                </a>
+                <a class="nav-link glow" href="/signup"><button class="btn btn-primary my-2 my-sm-0" style="margin-left:4px;"
+                        type="submit">SignUp</button></a>
+                {% else %}
+                <div class="nav-item active">
+
+                    <a class="nav-link" href="/home">Home</a>
+                </div>
+                <div class="nav-item ">
+                    <a class="nav-link" href="/history">History</a>
+                </div>
+                <div class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" id="navDropDownLink" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                        <img src="/static/images/man.png" class="rounded-circle" style=" height: 35px; width:35px;"
+                            alt="profile">
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navDropDownLink">
+                        
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="/login/profile">Edit profile</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="/logout">Logout</a>
+                    </div>
+                    {% endif %}
+                </div>
+
+
+            </div>
+        </div>
+    </nav>
+    {% block body %}{% endblock %}
+    <!-- dummy footer -->
+    <!-- Remove the container if you want to extend the Footer to full width. -->
+    <footer class="bg-dark" id="footer">
+        <div class="container px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5 justify-content-center">
+                <div class="col-md-10 col-lg-8 col-xl-7">
+                    <ul class="list-inline text-center" style="margin-top: 20px;">
+                        <li class="list-inline-item">
+                            <a href="#!">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fas fa-circle fa-stack-2x"></i>
+                                    <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="#!">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fas fa-circle fa-stack-2x"></i>
+                                    <i class="fab fa-facebook-f fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="#!">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fas fa-circle fa-stack-2x"></i>
+                                    <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="small text-center text-muted fst-italic">Copyright &copy; Your Website 2023</div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- End of .container -->
+    <!-- End of .container -->
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+
+
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <!-- fa5-$-js -->
+    <script defer src="https://use.fontawesome.com/releases/v5.1.1/js/all.js"
+        integrity="sha384-BtvRZcyfv4r0x/phJt9Y9HhnN5ur1Z+kZbKVgzVBAlQZX4jvAuImlIz+bG7TS00a"
+        crossorigin="anonymous"></script>
+    <!-- animation engine -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <script>
+       
+        $(function () {
+            anime({
+                targets: '.glow',
+                scale: [
+                    { value: 1.1, easing: 'easeOutSine', duration: 500 },
+                    { value: 1, easing: 'easeInOutQuad', duration: 1200 }
+                ],
+                loop: true
+            });
+            $(function () {
+            anime({
+            targets: '.nav-item',
+            margin:['5px','10px'],
+            easing: 'easeInOutQuad',
+            duration:300,
+            });
+        });
+      
+
+        });
+    </script>
+    {% block js %}{% endblock %}
+
+</body>
+
+</html>

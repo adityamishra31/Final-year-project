@@ -1,0 +1,110 @@
+{% extends 'base.html' %}
+
+{% block css %}
+<style>
+  
+  h2 {
+    text-align: center;
+
+  }
+
+  label,
+  select {
+    display: block;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+
+  input[type="text"],
+  input[type="file"],
+  select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 16px;
+  }
+
+  
+
+  .btn{
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+  
+  footer {
+            margin-top: 10vw;
+        }
+
+        @media screen and (min-width: 768px) {
+            footer {
+                margin-top: 15vw;
+            }
+        }
+
+        @media screen and (min-width: 992px) {
+            footer {
+                margin-top: 20vw;
+            }
+        }
+  
+</style>
+{% endblock %}
+{% block body %}
+
+<div class="container vh-100 ">
+  <div class="row justify-content-center">
+    
+    <div class="col-sm-12 col-md-8 " style="margin-top: 10rem;">
+      {% include "notification.html" %}
+      <div class="shadow-lg p-1 m-4">
+       
+        <div class="card-header">
+          <div class="card-title">
+            <h2>Please upload your file</h2>
+          </div>
+        </div>
+
+        <form action="/upload" method="post" class="upload_menu m-3" enctype="multipart/form-data">
+          
+          <label for="name">Name:</label>
+          <input type="text" id="name" name="name">
+
+          <label for="file">Select a file:</label>
+          <input type="file" id="file" name="file">
+
+          
+          <button class="btn btn-success btn-block">Upload</button>
+          
+        </form>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+{% endblock %}
+{% block js %}
+<script>
+  
+  $(function () {
+         anime({
+  targets: '.container',
+  translateY: [
+    {value: -20, duration: 500},
+    {value: 0, duration: 800}
+  ],
+  delay: 100,
+  easing: 'easeInOutQuad'
+});
+
+  });
+
+
+
+</script>
+{% endblock %}

@@ -1,0 +1,204 @@
+{% extends 'base.html' %}
+<style>
+    
+</style>
+{% block css %}
+<style>
+    /* Reset Styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Global Styles */
+body {
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #333;
+}
+
+a {
+  color: #0066cc;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Header Styles */
+header {
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+
+
+
+
+/* Hero Styles */
+#hero {
+  background-color: #333;
+  background-size: cover;
+  background-position: center;
+  color: #fff;
+  padding: 100px 0;
+}
+
+#hero h2 {
+  font-size: 48px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+#hero p {
+  font-size: 24px;
+  margin-bottom: 40px;
+}
+
+.contact_btn {
+  display: inline-block;
+  background-color: #646464;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 20px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.contact_btn:hover {
+  background-color: #ffffff;
+}
+
+/* Services Styles */
+#services {
+  background-color: #dfdfdf;
+  padding: 100px 0;
+}
+
+#services h2 {
+  font-size: 36px;
+  font-weight: bold;
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.service {
+  
+  background-color: #ffffff;
+  border-radius: 5px;
+  padding: 40px;
+  margin-bottom: 20px;
+}
+
+.service h3 {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+/* CTA Styles */
+#cta {
+  background-color: #0066cc;
+  color: #fff;
+  padding: 100px 0;
+  text-align: center;
+}
+
+#cta h2 {
+  font-size: 48px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+/* Footer Styles */
+footer {
+  background-color: #f2f2f2;
+  padding: 20px;
+  text-align: center;
+}
+
+footer p {
+  font-size: 14px;
+  color: #999;
+}
+
+</style>
+{% endblock %}
+{% block body %}
+<section id="hero">
+    <div class="container">
+      <h2>Unlock the Value of Your Data</h2>
+      <p>We help businesses extract insights and make data-driven decisions.</p>
+      <a href="https://blog.hubspot.com/website/data-mining" class="contact_btn">Learn More</a>
+    </div>
+  </section>
+  <section id="services">
+    <div class="container">
+      <h2>Our Services</h2>
+      <div class="service">
+        <h3>Data Analysis</h3>
+        <p>We analyze your data and extract insights to help you make informed decisions.</p>
+      </div>
+      <div class="service">
+        <h3>Data Visualization</h3>
+        <p>We create visualizations that help you understand your data and communicate insights effectively.</p>
+      </div>
+      <div class="service">
+        <h3>Data Mining</h3>
+        <p>We use data mining techniques to identify patterns and relationships in your data.</p>
+      </div>
+      <div class="service">
+        <h3>Data Mining</h3>
+        <p>We use data mining techniques to identify patterns and relationships in your data.</p>
+      </div>
+      <div class="service">
+        <h3>Data Mining</h3>
+        <p>We use data mining techniques to identify patterns and relationships in your data.</p>
+      </div>
+      <div class="service">
+        <h3>Data Mining</h3>
+        <p>We use data mining techniques to identify patterns and relationships in your data.</p>
+      </div>
+      <div class="service">
+        <h3>Data Mining</h3>
+        <p>We use data mining techniques to identify patterns and relationships in your data.</p>
+      </div>
+      <div class="service">
+        <h3>Data Mining</h3>
+        <p>We use data mining techniques to identify patterns and relationships in your data.</p>
+      </div>
+      <div class="service">
+        <h3>Data Mining</h3>
+        <p>We use data mining techniques to identify patterns and relationships in your data.</p>
+      </div>
+    </div>
+  </section>
+  <section id="cta">
+    <div class="container">
+      <h2>Ready to Get Started?</h2>
+      <a href="/contact" class="contact_btn">Contact Us</a>
+    </div>
+  </section>
+  <section id="cta" style="background-color: #333;">
+    <div class="container">
+      <h2>Haven't Registered yet?</h2>
+      <a href="/signup" class="contact_btn">Register</a>
+    </div>
+  </section>
+  <section id="cta">
+    <div class="container">
+      <h2>Already Registered ?</h2>
+      <a href="/login" class="contact_btn">Login</a>
+    </div>
+  </section>
+{% endblock %}
+{% block js %}{% endblock %}

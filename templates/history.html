@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+
+{% block css %}
+<style>
+      
+       table {
+        margin-top: 55px;
+        border-collapse: collapse;
+        width: 100%;
+        background-color: aliceblue;
+      }
+
+      tr {
+        text-align: center;
+        padding: 8px;
+        border-bottom: 1px solid #e6e6e6;
+        border-right: 1px solid #e6e6e6;
+      }
+
+      th {
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+       font-weight: bold;
+        background-color: #e7e7e7;
+        color: #424242;
+      }
+      .btn{
+        padding:5px;
+      }
+</style>
+{% endblock %}
+{% block body %}
+{% if files %}
+      <h1>File Upload History</h1>
+      <table >
+        <thead class="datashow">
+          <tr>
+            <th>Filename</th>
+            <th>Upload Date</th>
+            <th>File Size</th>
+            <th>Remove</th>
+          </tr>
+        </thead>
+        <tbody >
+          {% for file in files %}
+            <tr>
+              <td>{{ file.name }}</td>
+              <td class="data">{{ file.created_at.strftime('%Y-%m-%d %H:%M:%S') }}</td>
+              <td class="data">{{ file.size }}</td>
+              <td class="deleter"><button class="btn btn-danger"> <img src="/static/images/close.png" class="rounded-circle" style=" height: 25px; width:25px;"
+                alt="delete"></button></td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    {% else %}
+      <p>No files found.</p>
+    {% endif %}
+{% endblock %}
+{% block js %}
+<script>
+  $(function () {
+      anime({
+      targets: '.datashow',
+      margin:['5px','10px'],
+      easing: 'easeInOutQuad',
+      duration:300,
+      });
+  });
+</script>
+{% endblock %}

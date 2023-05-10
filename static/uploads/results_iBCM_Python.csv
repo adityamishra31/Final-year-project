@@ -1,0 +1,8 @@
+dataset,support,classifier,no_folds,reduce,no_features,accuracy,auc
+auslan2,0.1,Random forest,10,True,237.9,0.31500000000000006,0.7855555555555556
+auslan2,0.1,Random forest,10,True,237.9,0.30500000000000005,0.7854166666666667
+aslbu,0.1,Random forest,10,True,2860.7,0.5632890365448506,0.7474016892636686
+context,0.1,Random forest,10,True,6153.7,0.8833333333333334,0.983125
+pioneer,0.1,Random forest,10,True,11768.2,0.975,1.0
+Unix,0.1,Random forest,10,True,408.9,0.8894500860700036,0.9690880617626976
+auslan2,0.1,Random forest,10,True,237.9,0.32,0.7843055555555556
