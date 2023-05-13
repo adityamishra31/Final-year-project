@@ -5,39 +5,8 @@
 
 
     /* center the form on the page */
-form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 50px;
-}
-
-/* style the form labels and inputs */
-label {
-  font-weight: bold;
-  margin-bottom: 10px;
-}
-
-input[type="email"] {
-  padding: 10px;
-  border-radius: 5px;
-  border: none;
-  margin-bottom: 20px;
-  width: 300px;
-}
-
-input[type="submit"] {
-  background-color: #4CAF50;
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 16px;
-}
-
-input[type="submit"]:hover {
-  background-color: #3e8e41;
+h2{
+    text-align:center;
 }
 
 </style>
@@ -45,12 +14,47 @@ input[type="submit"]:hover {
 
 {% endblock %}
 {% block body %}
-<h1>Forgot Password</h1>
-    <form method="POST" >
-      <label for="email">Email:</label>
-      <input type="email" id="email" name="email" required><br><br>
-      <input type="submit" value="Submit">
-    </form>
+<div class="container vh-100 " >
+  <div class="row justify-content-center">
+      <div class="col-sm-12 col-md-7" style="margin-top: 8rem;">
+          {% include "notification.html" %}
+          <div class="shadow-lg m-4  " >
+              <div class="card-header">
+                  <div class="card-title"><h2>Forgot Password</h2></div>
+              </div>
+              <form method="POST" class="p-4">
+                  <div class="form-group">
+                    <label for="email">Email address</label>
+                    <input type="email"
+                      class="form-control" name="email" id="email" aria-describedby="emailHelp">
+                    <small id="emailHelp" class="form-text text-muted"> enter registered email</small>
+                  </div>
+                  
+                  <button class="btn btn-success btn-block">Submit</button>
+                  
+                </form>
+                
+                
+                </div>
+          </div>
+      </div>
+  </div>
+</div>
 
 {% endblock %}
-{% block js %}{% endblock %}
+{% block js %}
+<script>
+
+  $(function () {
+        anime({
+        targets: '.container',
+        scale: [.9,1],
+        delay: 300
+      });
+    });
+    
+    
+    
+</script>
+
+{% endblock %}

@@ -98,9 +98,6 @@ def signup():
             flash('*invalid name! must be more than 3 characters.','danger')
     return render_template('signup.html',title='register')
 
-@app.route('/forgot',methods=['GET','POST'])
-def forgot():
-    return render_template('forgot.html',title='forgot password')
 
 @app.route('/home',methods=['GET','POST'])
 def home():
@@ -188,19 +185,20 @@ def forgot_password():
     if request.method == 'POST':
         email = request.form['email']
         sess = get_db()
-        user = sess.User.query.filter_by(email=email).first()
+        user = sess.query(User).filter_by(email=email).first()
         if user:
             token = str(uuid.uuid4())
             expiration_date = datetime.now() + timedelta(hours=1)
             db = get_db()
             reset_request = PasswordResetRequest(email=email, token=token, expiration_date=expiration_date)
-            db.session.add(reset_request)
-            db.session.commit()
+            db.add(reset_request)
+            db.commit()
             reset_link = url_for('reset_password', token=token, _external=True)
             # Send an email containing the reset_link to the user
-            return "Password reset email sent"
+            flash(f'Email sent to {email}', 'success')
+            return redirect('/reset_password/<token>')
         else:
-            return "Email address not found"
+            flash('Sorry! You are not registered', 'danger')
     return render_template('forgot.html')
 
 @app.route('/reset_password/<token>', methods=['GET', 'POST'])
@@ -218,12 +216,10 @@ def reset_password(token):
             db.close()
             return "Password reset successful"
         else:
+            flash('Sorry! You are not registered', 'danger')
             return "User not found"
     return render_template('reset_password.html', token=token)
 
-@atexit.register
-def on_exit():
-    session.isauth='False'
 
 if __name__ == "__main__":
     app.run(debug=True,threaded=True)
