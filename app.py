@@ -7,7 +7,8 @@ from utils import *
 from flask import Flask, render_template, request, redirect, url_for, session, flash
 from werkzeug.utils import secure_filename
 import os
-import atexit
+from flask_mail import Mail, Message
+from threading import Thread
 from datetime import datetime, timedelta
 import uuid
 
@@ -16,7 +17,12 @@ app.secret_key = "the basics of life with python"
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.sqlite'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['UPLOAD_FOLDER'] = '/static/uploads'
-
+app.config['MAIL_SERVER'] = 'mail.digipodium.com'
+app.config['MAIL_PORT'] = 465
+app.config['MAIL_USE_SSL'] = True
+app.config['MAIL_USERNAME'] = "adityakumarmishra5066@digipodium.com"
+app.config['MAIL_PASSWORD'] = "digipodium50662k22"
+mail = Mail(app)
 
 
 
@@ -179,6 +185,8 @@ def history():
         return redirect('/login')
 
 
+        
+
 
 @app.route('/forgot', methods=['GET', 'POST'])
 def forgot_password():
@@ -193,30 +201,45 @@ def forgot_password():
             reset_request = PasswordResetRequest(email=email, token=token, expiration_date=expiration_date)
             db.add(reset_request)
             db.commit()
-            reset_link = url_for('reset_password', token=token, _external=True)
+            reset_link = url_for('reset_password',token=token, _external=True)
             # Send an email containing the reset_link to the user
-            flash(f'Email sent to {email}', 'success')
-            return redirect('/reset_password/<token>')
+            def send_email(app, msg):
+                with app.app_context():
+                         mail.send(msg)
+            Email_body=f' this is {reset_link} for password reset'
+            msg =Message()
+            msg.subject = "Password Reset Request"
+            
+            msg.recipients = [email]
+            msg.sender = 'adityakumarmishra5066@digipodium.com'
+            msg.body = Email_body
+            Thread(target=send_email, args=(app, msg)).start()
+            
+            return 'Email sent successfully'
         else:
             flash('Sorry! You are not registered', 'danger')
+            return redirect('/forgot')
     return render_template('forgot.html')
 
 @app.route('/reset_password/<token>', methods=['GET', 'POST'])
 def reset_password(token):
-    reset_request = PasswordResetRequest.query.filter_by(token=token).first()
+    sess=get_db()
+    reset_request = sess.query(PasswordResetRequest).filter_by(token=token).first()
     if not reset_request or reset_request.expiration_date < datetime.now():
         return "Invalid or expired token"
     if request.method == 'POST':
-        user = User.query.filter_by(email=reset_request.email).first()
+        user = sess.query(User).filter_by(email=reset_request.email).first()
         if user:
             user.password = request.form['password']
-            db=get_db()
-            db.session.delete(reset_request)
-            db.session.commit()
-            db.close()
-            return "Password reset successful"
+            cpassword=request.form['cpassword']
+            if cpassword == user.password:
+                    
+                    sess.delete(reset_request)
+                    sess.commit()
+                    sess.close()
+                    return "Password reset successful"
         else:
-            flash('Sorry! You are not registered', 'danger')
+            
             return "User not found"
     return render_template('reset_password.html', token=token)
 
