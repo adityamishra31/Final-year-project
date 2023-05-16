@@ -25,10 +25,8 @@
             background-size: cover;
         }
 
-.navbar-brand{
-    font-size: 30px;
-    font-family:  'Brush Script MT', cursive;
-}
+      
+
         .navbar {
              padding-left: 70px;
              padding-right:70px;
@@ -39,10 +37,14 @@
             width: 100%;
         }
 
-        .nav-item {
-           
+        .nav-item  {
+           color: rgb(153, 186, 235);
             font-weight: bold;
            padding-top: 13px;
+        }
+        
+        .login-item.hover{
+            color: rgb(153, 160, 255);
         }
 
         #footer {
@@ -57,7 +59,7 @@
 <body>
     <!-- b4-nav-ul -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand font-weight-bold" href="#"><img height="80px"  width="80px" src="/static/images/brand4.png"></a>
+        <a class="navbar-brand font-weight-bold" href="#"><img height="50px"  width="50px" src="/static/images/brand4.png"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -97,20 +99,18 @@
             <div class="form-inline my-3 my-lg-0" >
 
                 {% if not session.isauth %}
-                <a class="nav-link glow" href="/login"><button class="btn btn-outline-success my-2 my-sm-0"
-                        type="submit">Login</button>
+                <a class="nav-item glow" href="/login">Login
                 </a>
-                <a class="nav-link glow" href="/signup"><button class="btn btn-primary my-2 my-sm-0" style="margin-left:4px;"
-                        type="submit">SignUp</button></a>
+                <a class="nav-item glow"  href="/signup">SignUp</a>
                 {% else %}
                 <div class="nav-item active">
 
-                    <a class="nav-link" href="/home">Home</a>
+                    <a class="nav-link login-item"  href="/home">Home</a>
                 </div>
-                <div class="nav-item ">
-                    <a class="nav-link" href="/history">History</a>
+                <div class="nav-item login-item ">
+                    <a class="nav-link"  href="/history">History</a>
                 </div>
-                <div class="nav-item dropdown">
+                <div class="nav-item login-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" id="navDropDownLink" data-toggle="dropdown"
                         aria-haspopup="true" aria-expanded="false">
                         <img src="/static/images/man.png" class="rounded-circle" style=" height: 35px; width:35px;"
@@ -192,14 +192,7 @@
     <script>
        
         $(function () {
-            anime({
-                targets: '.glow',
-                scale: [
-                    { value: 1.1, easing: 'easeOutSine', duration: 500 },
-                    { value: 1, easing: 'easeInOutQuad', duration: 1200 }
-                ],
-                loop: true
-            });
+            
             $(function () {
             anime({
             targets: '.nav-item',

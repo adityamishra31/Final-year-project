@@ -238,6 +238,9 @@ def reset_password(token):
                     sess.commit()
                     sess.close()
                     return "Password reset successful"
+            else:
+                flash("password did not match",'danger')
+                return redirect(url_for('reset_password', token=token))
         else:
             
             return "User not found"
