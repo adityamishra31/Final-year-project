@@ -22,7 +22,7 @@ class Constraint:
             else:
                 return False
              
-                
+         
 class Annotated_trace:
 
     def __init__(self, name, constraints, label):
