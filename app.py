@@ -23,9 +23,6 @@ app.config['MAIL_USE_SSL'] = True
 app.config['MAIL_USERNAME'] = "adityakumarmishra5066@digipodium.com"
 app.config['MAIL_PASSWORD'] = "digipodium50662k22"
 mail = Mail(app)
-
-
-
 def session_add(key, value):
     session[key] = value
 
@@ -44,7 +41,7 @@ def get_db():
 
 @app.route('/')
 def index():
-    return render_template('home.html')
+    return render_template('landing.html')
 
 @app.route('/login',methods=['GET','POST'])
 def login():
@@ -184,10 +181,6 @@ def history():
         flash('Please login before accessing')
         return redirect('/login')
 
-
-        
-
-
 @app.route('/forgot', methods=['GET', 'POST'])
 def forgot_password():
     if request.method == 'POST':
@@ -248,6 +241,7 @@ def reset_password(token):
 
 
 if __name__ == "__main__":
-    app.run(debug=True,threaded=True)
+    
+    app.run(host='0.0.0.0',port=8000,debug=True)
 
 
