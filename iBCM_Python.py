@@ -12,7 +12,12 @@ from sklearn.tree import DecisionTreeClassifier as DT
 from run_iBCM import iBCM, iBCM_verify
 
 
-def run_iBCM(dataset, support): 
+def run_iBCM(dataset, support, no_folds=1, no_win=1): 
+    reduce_feature_space = True
+    name_result_file = 'results_iBCM_Python.csv'
+    classifiers = [('Random forest',RF(n_estimators=100))]
+    np.random.seed(42)
+    write_results = True
     ## Read files
     trace_file = open('./datasets/'+dataset+'.dat', 'r')
     label_file = open('./datasets/'+dataset+'.lab', 'r')
@@ -70,7 +75,7 @@ def run_iBCM(dataset, support):
         # Label test data
         iBCM_verify(filename_test, test_points, test_labels, final_constraints, no_win)
         fold_test_results.append(pd.read_csv(filename_test))
-                
+        
         os.remove(filename_train)
         os.remove(filename_test)
          
@@ -140,25 +145,19 @@ def run_iBCM(dataset, support):
         print('Avg. AUC.:', avg_auc)
         print('Avg. #features.:', avg_feat)                     
         
-
 if __name__ == '__main__':
     ### Start program and enter parameters
     no_folds = 2
     no_win = 1
     reduce_feature_space = True
-
     name_result_file = 'results_iBCM_Python.csv'
-
     classifiers = [('Random forest',RF(n_estimators=100))]
-
     np.random.seed(42)
-
     write_results = True
-
-    for dataset in ['auslan2','aslbu','pioneer','Unix']:
+    for dataset in ['auslan2']:
         print('\nDataset:', dataset)
         try:
-            for support in [0.1]:#0.2,0.4,0.6,0.8]:
+            for support in [0.4]:#0.2,0.4,0.6,0.8]:
                 print('\nSupport level:', support)
                 run_iBCM(dataset, support)
         except:
