@@ -38,7 +38,6 @@ def get_db():
     Session = scoped_session(sessionmaker(bind=engine))
     return Session()
 
-
 @app.route('/')
 def index():
     return render_template('landing.html')
