@@ -12,11 +12,11 @@ from sklearn.tree import DecisionTreeClassifier as DT
 from run_iBCM import iBCM, iBCM_verify
 
 
-def run_iBCM(dataset, support, no_folds=1, no_win=1): 
+def run_iBCM(dataset, support, no_folds=10, no_win=1): 
     reduce_feature_space = True
     name_result_file = 'results_iBCM_Python.csv'
     classifiers = [('Random forest',RF(n_estimators=100))]
-    np.random.seed(42)
+    #np.random.seed(42)
     write_results = True
     ## Read files
     trace_file = open('./datasets/'+dataset+'.dat', 'r')
@@ -33,12 +33,11 @@ def run_iBCM(dataset, support, no_folds=1, no_win=1):
     label_set = set(label_list)
     no_labels = len(label_set)
     print('#labels:',no_labels)
-          
-    skf = StratifiedKFold(no_folds)
-    
-    
+
+    skf = StratifiedKFold(n_splits=no_folds)    
     ##########################
     ## Apply iBCM on all folds
+    
     fold_train_results = []
     fold_test_results = []
     

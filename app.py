@@ -26,7 +26,6 @@ mail = Mail(app)
 def session_add(key, value):
     session[key] = value
 
-
 def save_file(file):
     filename = secure_filename(file.filename)
     path = os.path.join(app.config['UPLOAD_FOLDER'][1:], filename)

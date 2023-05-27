@@ -24,8 +24,8 @@ def classify(technique, classifiers, parameters):
                 test = pd.read_csv('./datasets/training-test-data/'+dataset+'_test_fold_'+str(i)+'_'+technique+'.csv')                          
             elif technique in ['iBCM','BIDE','SPADE','PrefixSPAN']:
                 support = parameters[0]
-                training = pd.read_csv('./datasets/training-test-data/'+dataset+'_training_fold_'+str(i)+'_'+technique+'_'+str(support)+'.csv')
-                test = pd.read_csv('./datasets/training-test-data/'+dataset+'_test_fold_'+str(i)+'_'+technique+'_'+str(support)+'.csv')
+                training = pd.read_csv(dataset+'_training_fold_'+str(i)+'_'+technique+'_'+str(support)+'.csv')
+                test = pd.read_csv(dataset+'_test_fold_'+str(i)+'_'+technique+'_'+str(support)+'.csv')
                 
             y_train = training['label']
             X_train = training.drop(['label'], axis=1)                 
@@ -69,7 +69,7 @@ def classify(technique, classifiers, parameters):
     
 techniques = ['iBCM','MiSeRe', 'BIDE', 'PrefixSPAN', 'SPADE']
 
-datasets = ['auslan2','aslbu','pioneer']
+datasets = ['aslbu','pioneer']
 
 support_levels = [0.2,0.4,0.6,0.8]
 seconds = [1,2,5]
