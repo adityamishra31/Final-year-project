@@ -1,0 +1,201 @@
+Transaction ID,Items
+1,Smartphone,Headphones,Screen Protector
+2,Smart TV,Soundbar,HDMI Cable
+3,Tablet,Charger,Bluetooth Speaker
+4,Laptop,Wireless Mouse
+5,Headphones,USB Flash Drive
+6,Smartphone,Charger,Screen Protector
+7,Smart TV,Soundbar,Bluetooth Speaker,HDMI Cable
+8,Tablet,Charger
+9,Laptop,Wireless Mouse,USB Flash Drive
+10,Smartphone,Tablet,Headphones,Charger,Screen Protector
+11,Smart TV,Soundbar,Bluetooth Speaker,HDMI Cable
+12,Tablet,Charger,Bluetooth Speaker
+13,Laptop,Wireless Mouse,USB Flash Drive
+14,Headphones,Screen Protector
+15,Smartphone,Headphones,Charger
+Transaction ID,Items
+16,Smart TV,Soundbar,HDMI Cable,Bluetooth Speaker
+17,Laptop,Wireless Mouse,USB Flash Drive
+18,Tablet,Charger,Screen Protector
+19,Smartphone,Headphones,Charger
+20,Smart TV,Soundbar,HDMI Cable
+21,Smartphone,Charger,Bluetooth Speaker,Screen Protector
+22,Laptop,Wireless Mouse
+23,Headphones,USB Flash Drive
+24,Smart TV,Soundbar,Bluetooth Speaker,HDMI Cable
+25,Tablet,Charger,Bluetooth Speaker
+26,Laptop,Wireless Mouse,USB Flash Drive
+27,Smartphone,Tablet,Charger,Headphones,Screen Protector
+28,Smart TV,Soundbar,HDMI Cable
+29,Tablet,Charger,Bluetooth Speaker
+30,Headphones,Screen Protector
+31,Smartphone,Headphones,Charger
+32,Smart TV,Soundbar,HDMI Cable
+33,Laptop,Wireless Mouse,USB Flash Drive
+34,Tablet,Charger,Screen Protector
+35,Smartphone,Headphones,Charger
+36,Smart TV,Soundbar,HDMI Cable
+37,Laptop,Wireless Mouse,USB Flash Drive
+38,Tablet,Charger,Bluetooth Speaker
+39,Smartphone,Charger,Bluetooth Speaker,Screen Protector
+40,Smart TV,Soundbar,HDMI Cable
+41,Laptop,Wireless Mouse
+42,Headphones,USB Flash Drive
+43,Smart TV,Soundbar,Bluetooth Speaker,HDMI Cable
+44,Tablet,Charger,Bluetooth Speaker
+45,Laptop,Wireless Mouse,USB Flash Drive
+46,Smartphone,Tablet,Charger,Headphones,Screen Protector
+47,Smart TV,Soundbar,HDMI Cable
+48,Tablet,Charger,Bluetooth Speaker
+49,Headphones,Screen Protector
+50,Smartphone,Headphones,Charger
+51,Smart TV,Soundbar,HDMI Cable
+52,Laptop,Wireless Mouse,USB Flash Drive
+53,Tablet,Charger,Screen Protector
+54,Smartphone,Headphones,Charger
+55,Smart TV,Soundbar,HDMI Cable
+56,Laptop,Wireless Mouse,USB Flash Drive
+57,Tablet,Charger,Bluetooth Speaker
+58,Smartphone,Charger,Bluetooth Speaker,Screen Protector
+59,Smart TV,Soundbar,HDMI Cable
+60,Laptop,Wireless Mouse
+61,Headphones,USB Flash Drive
+62,Smart TV,Soundbar,Bluetooth Speaker,HDMI Cable
+63,Tablet,Charger,Bluetooth Speaker
+64,Laptop,Wireless Mouse,USB Flash Drive
+65,Smartphone,Tablet,Charger,Headphones,Screen Protector
+66,Smart TV,Soundbar,HDMI Cable
+67,Tablet,Charger,Bluetooth Speaker
+68,Headphones,Screen Protector
+69,Smartphone,Headphones,Charger
+70,Smart TV,Soundbar,HDMI Cable
+71,Laptop,Wireless Mouse,USB Flash Drive
+72,Tablet,Charger,Screen Protector
+73,Smartphone,Headphones,Charger
+74,Smart TV,Soundbar,HDMI Cable
+75,Laptop,Wireless Mouse,USB Flash Drive
+76,Tablet,Charger,Bluetooth Speaker
+77,Smartphone,Charger,Bluetooth Speaker,Screen Protector
+78,Smart TV,Soundbar,HDMI Cable
+79,Laptop,Wireless Mouse
+80,Headphones,USB Flash Drive
+83,Laptop,Wireless Mouse,USB Flash Drive
+84,Smartphone,Tablet,Charger,Headphones,Screen Protector
+85,Smart TV,Soundbar,HDMI Cable
+86,Tablet,Charger,Bluetooth Speaker
+87,Headphones,Screen Protector
+88,Smartphone,Headphones,Charger
+89,Smart TV,Soundbar,HDMI Cable
+90,Laptop,Wireless Mouse,USB Flash Drive
+91,Tablet,Charger,Screen Protector
+92,Smartphone,Headphones,Charger
+93,Smart TV,Soundbar,HDMI Cable
+94,Laptop,Wireless Mouse,USB Flash Drive
+95,Tablet,Charger,Bluetooth Speaker
+96,Smartphone,Charger,Bluetooth Speaker,Screen Protector
+97,Smart TV,Soundbar,HDMI Cable
+98,Laptop,Wireless Mouse
+99,Headphones,USB Flash Drive
+100,Smart TV,Soundbar,Bluetooth Speaker,HDMI Cable
+Transaction ID,Items
+101,Tablet,Charger,Bluetooth Speaker
+102,Laptop,Wireless Mouse,USB Flash Drive
+103,Smartphone,Tablet,Charger,Headphones,Screen Protector
+104,Smart TV,Soundbar,HDMI Cable
+105,Tablet,Charger,Bluetooth Speaker
+106,Headphones,Screen Protector
+107,Smartphone,Headphones,Charger
+108,Smart TV,Soundbar,HDMI Cable
+109,Laptop,Wireless Mouse,USB Flash Drive
+110,Tablet,Charger,Screen Protector
+111,Smartphone,Headphones,Charger
+112,Smart TV,Soundbar,HDMI Cable
+113,Laptop,Wireless Mouse,USB Flash Drive
+114,Tablet,Charger,Bluetooth Speaker
+115,Smartphone,Charger,Bluetooth Speaker,Screen Protector
+116,Smart TV,Soundbar,HDMI Cable
+117,Laptop,Wireless Mouse
+118,Headphones,USB Flash Drive
+119,Smart TV,Soundbar,Bluetooth Speaker,HDMI Cable
+120,Tablet,Charger,Bluetooth Speaker
+121,Laptop,Wireless Mouse,USB Flash Drive
+122,Smartphone,Tablet,Charger,Headphones,Screen Protector
+123,Smart TV,Soundbar,HDMI Cable
+124,Tablet,Charger,Bluetooth Speaker
+125,Headphones,Screen Protector
+126,Smartphone,Headphones,Charger
+127,Smart TV,Soundbar,HDMI Cable
+128,Laptop,Wireless Mouse,USB Flash Drive
+129,Tablet,Charger,Screen Protector
+130,Smartphone,Headphones,Charger
+131,Smart TV,Soundbar,HDMI Cable
+132,Laptop,Wireless Mouse,USB Flash Drive
+133,Tablet,Charger,Bluetooth Speaker
+134,Smartphone,Charger,Bluetooth Speaker,Screen Protector
+135,Smart TV,Soundbar,HDMI Cable
+136,Laptop,Wireless Mouse
+137,Headphones,USB Flash Drive
+138,Smart TV,Soundbar,Bluetooth Speaker,HDMI Cable
+139,Tablet,Charger,Bluetooth Speaker
+140,Laptop,Wireless Mouse,USB Flash Drive
+141,Smartphone,Tablet,Charger,Headphones,Screen Protector
+142,Smart TV,Soundbar,HDMI Cable
+143,Tablet,Charger,Bluetooth Speaker
+144,Headphones,Screen Protector
+145,Smartphone,Headphones,Charger
+146,Smart TV,Soundbar,HDMI Cable
+147,Laptop,Wireless Mouse,USB Flash Drive
+148,Tablet,Charger,Screen Protector
+149,Smartphone,Headphones,Charger
+150,Smart TV,Soundbar,HDMI Cable
+151,Laptop,Wireless Mouse,USB Flash Drive
+152,Tablet,Charger,Bluetooth Speaker
+153,Smartphone,Charger,Bluetooth Speaker,Screen Protector
+154,Smart TV,Soundbar,HDMI Cable
+155,Laptop,Wireless Mouse
+156,Headphones,USB Flash Drive
+157,Smart TV,Soundbar,Bluetooth Speaker,HDMI Cable
+158,Tablet,Charger,Bluetooth Speaker
+159,Laptop,Wireless Mouse,USB Flash Drive
+160,Smartphone,Tablet,Charger,Headphones,Screen Protector
+161,Smart TV,Soundbar,HDMI Cable
+162,Tablet,Charger,Bluetooth Speaker
+163,Headphones,Screen Protector
+164,Smartphone,Headphones,Charger
+165,Smart TV,Soundbar,HDMI Cable
+166,Laptop,Wireless Mouse,USB Flash Drive
+167,Tablet,Charger,Screen Protector
+168,Smartphone,Headphones,Charger
+169,Smart TV,Soundbar,HDMI Cable
+170,Laptop,Wireless Mouse,USB Flash Drive
+171,Tablet,Charger,Bluetooth Speaker
+172,Smartphone,Charger,Bluetooth Speaker,Screen Protector
+173,Smart TV,Soundbar,HDMI Cable
+174,Laptop,Wireless Mouse
+175,Headphones,USB Flash Drive
+176,Smart TV,Soundbar,Bluetooth Speaker,HDMI Cable
+177,Tablet,Charger,Bluetooth Speaker
+178,Laptop,Wireless Mouse,USB Flash Drive
+179,Smartphone,Tablet,Charger,Headphones,Screen Protector
+180,Smart TV,Soundbar,HDMI Cable
+181,Tablet,Charger,Bluetooth Speaker
+182,Headphones,Screen Protector
+183,Smartphone,Headphones,Charger
+184,Smart TV,Soundbar,HDMI Cable
+185,Laptop,Wireless Mouse,USB Flash Drive
+186,Tablet,Charger,Screen Protector
+187,Smartphone,Headphones,Charger
+188,Smart TV,Soundbar,HDMI Cable
+189,Laptop,Wireless Mouse,USB Flash Drive
+190,Tablet,Charger,Bluetooth Speaker
+191,Smartphone,Charger,Bluetooth Speaker,Screen Protector
+192,Smart TV,Soundbar,HDMI Cable
+193,Laptop,Wireless Mouse
+194,Headphones,USB Flash Drive
+195,Smart TV,Soundbar,Bluetooth Speaker,HDMI Cable
+196,Tablet,Charger,Bluetooth Speaker
+197,Laptop,Wireless Mouse,USB Flash Drive
+198,Smartphone,Tablet,Charger,Headphones,Screen Protector
+199,Smart TV,Soundbar,HDMI Cable
+200,Tablet,Charger,Bluetooth Speaker
