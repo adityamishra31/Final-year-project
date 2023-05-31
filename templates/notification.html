@@ -2,12 +2,11 @@
     {% if messages %}
         {% for category, message in messages %}
         <div class="alert alert-{{category}} alert-dismissible fade show mx-4 mt-1" role="alert">
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-                <span class="sr-only">Close</span>
-            </button>
+            <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="alert" aria-label="Close">
+         </button>
             {{message}}
         </div>        
         {% endfor %}
     {% endif %}
 {% endwith %}
+

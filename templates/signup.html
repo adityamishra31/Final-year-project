@@ -1,93 +1,86 @@
 {% extends 'base.html' %}
 
 {% block css %}
-    <style>
-        
-        h2{
-          text-align: center;
-        }
-        footer {
-            margin-top: 10vw;
-        }
-
-        @media screen and (min-width: 768px) {
-            footer {
-                margin-top: 15vw;
-            }
-        }
-
-        @media screen and (min-width: 992px) {
-            footer {
-                margin-top: 20vw;
-            }
-        }
-    </style>
+<style>
+  section.scroll {
+    margin: 4px, 4px;
+    padding: 4px;
+    background-color: green;
+    width: 500px;
+    height: 110px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    text-align: justify;
+  }
+</style>
 {% endblock %}
 {% block body %}
-    <div class="container vh-100  " >
-        <div class="row justify-content-center">
-            <div class="col-sm-12 col-md-7" style="margin-top: 8rem;">
-                {% include "notification.html" %}
-                <div class="shadow-lg m-4  " >
-                    <div class="card-header">
-                        <div class="card-title"><h2>Register your account</h2></div>
-                    </div>
-                    <form method="POST" class="p-4">
-                        <div class="form-group">
-                          <label for="name">Your Name</label>
-                          <input type="text"
-                            class="form-control" name="name" id="name" aria-describedby="helpId" placeholder="">
-                          <small id="helpId" class="form-text text-muted">Full name</small>
-                        </div>
-                        <div class="form-group">
-                          <label for="email">email address</label>
-                          <input type="email"
-                            class="form-control" name="email" id="email" aria-describedby="emailHelp" placeholder="john@gamil.com">
-                          <small id="emailHelp" class="form-text text-muted">Enter a valid email address</small>
-                        </div>
-                        <div class="form-group">
-                          <label for="password">Password</label>
-                          <input type="password"
-                            class="form-control" name="password" id="password" aria-describedby="passhelpId" placeholder="min 6 chars">
-                          <small id="passhelpId" class="form-text text-muted">Enter a good password</small>
-                        </div>
-                        <div class="form-group">
-                          <label for="cpassword">Confirm Password</label>
-                          <input type="password"
-                            class="form-control" name="cpassword" id="cpassword" aria-describedby="cpasshelpId" placeholder="enter password again">
-                          <small id="cpasshelpId" class="form-text text-muted">re-enter password</small>
-                        </div>
-                        <button class="btn btn-success btn-block">Register</button>
-                    </form>
-                    <div class="text-center p-1">
-                      <p>already a member? <a href="/login">Login</a></p>
-                    </div>
-                </div>
+
+
+
+<section class="vh-90" style="background-color: #508bfc;">
+
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+    
+      <div class="col-12 col-md-6 col-lg-8 col-xl-5">
+        {% include "notification.html" %}
+       
+        <div class="card shadow-2-strong" style="border-radius: 1rem;">
+          <div class="card-body p-4 text-center">
+            <form method="POST">
+
+              <h3 class="mb-4 text-center fs-1">SignUp</h3>
+              <div class="form-floating mb-3">
+                <input type="name" class="form-control" id="floatingInput" placeholder="Name">
+                <label for="floatingInput">Enter Name</label>
+              </div>
+
+              <div class="form-floating mb-3">
+                <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+                <label for="floatingInput">Email address</label>
+              </div>
+              <div class="form-floating mb-3">
+                <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+                <label for="floatingPassword">Password</label>
+              </div>
+              <div class="form-floating mb-3">
+                <input type="cpassword" class="form-control" id="floatingPassword" placeholder="confirm Password">
+                <label for="floatingPassword">confirm Password</label>
+              </div>
+
+
+              <button class="btn btn-outline-primary btn-lg btn-block " type="submit">Register</button>
+
+            </form>
+
+            <hr class="my-3">
+
+            <div class="text-center ">
+              <p>already a member? <a href="/login">Login</a></p>
             </div>
+
+          </div>
         </div>
+      </div>
     </div>
+  </div>
+</section>
 {% endblock %}
 {% block js %}
 <script>
-      $(function () {
-        anime({
-  targets: '.container',
-  translateY: [
-    {value: -30, duration: 300},
-    {value: 0, duration: 600}
-  ],
-  delay: 100,
-  easing: 'easeInOutQuad'
-});
+  $(function () {
+    anime({
+      targets: '.container',
+      translateY: [
+        { value: -30, duration: 300 },
+        { value: 0, duration: 600 }
+      ],
+      delay: 100,
+      easing: 'easeInOutQuad'
+    });
 
 
-      });
+  });
 </script>
 {% endblock %}
-
-
-
-
-
-
-
