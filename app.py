@@ -55,15 +55,22 @@ def mine(uploaded_file = "Market_Basket_Optimisation.csv", w=3):
     return miner.local_constraints
 
 def visualize(constraint):
-    return vis.visualize_local_constraints(miner.local_constraints)
+    return vis.visualize_local_constraints(constraint).show()
+    
 
+# @app.route('/')
+# def index():
+#     if session.get('isauth'):
+#         username = session.get('name')
+#         return render_template('upload.html', title=f'Home|{username}')
+#     else:
+#         return render_template('landing.html')
+    
 @app.route('/')
 def index():
-    if session.get('isauth'):
-        username = session.get('name')
-        return render_template('upload.html', title=f'Home|{username}')
-    else:
-        return render_template('landing.html')
+    return render_template('landing.html')
+
+
 
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -84,15 +91,63 @@ def login():
                         session['created_at'] = user.created_at
                         del sess
                         flash('hurray! Login successful.', 'success')
-                        return redirect('/home')
+                        return redirect('/upload')
                     else:
                         flash('sorry! Email or password is wrong.', 'danger')
                 except Exception as e:
                     flash(e, 'danger')
-    return render_template('index.html', title='Login')
+    return render_template('login.html', title='Login')
 
-# enable debugging mode
-app.config["DEBUG"] = True
+@app.route('/signup',methods=['GET','POST'])
+def signup():
+   
+    if request.method == 'POST':
+        name = request.form.get('name')
+        email = request.form.get('email')
+        password = request.form.get('password')
+        cpassword = request.form.get('cpassword')
+        if name and len(name) >= 3:
+            if email and validate_email(email):
+                if password and len(password)>=6:
+                    if cpassword and cpassword == password:
+                        try:
+                            sess = get_db()
+                            newuser = User(name=name,email=email,password=password)
+                            sess.add(newuser)
+                            sess.commit()
+                            del sess
+                            flash('hurray!registration successful.','success')
+                            return redirect('/')
+                        except:
+                            flash('*email account already exists','danger')
+                    else:
+                        flash('*Sorry!confirm password does not match','danger')
+                else:
+                    flash('*password must be of more than 6 characters.','danger')
+            else:
+                flash('*invalid email!','danger')
+        else:
+            flash('name must be more than 3 characters.','danger')
+    return render_template('signup.html',title='register')
+
+
+@app.route('/home',methods=['GET','POST'])
+def home():
+    if session.get('isauth'):
+        username = session.get('name')
+        return render_template('upload.html',title=f'Home|{username}')
+    else :
+         return render_template('login.html')
+
+
+@app.route('/about')
+def about():
+    return render_template('about.html',title='About Us')
+
+@app.route('/login/profile')
+def profile():
+    return render_template('profile.html')
+
 
 
 # @app.route('/upload', methods=['POST'])
@@ -139,36 +194,149 @@ app.config['UPLOAD_FOLDER'] =  UPLOAD_FOLDER
 
 #Get the uploaded files
 
-@app.route("/", methods=['POST'])
-def uploadFiles():
-      # get the uploaded file
-      uploaded_file = request.files['file']
-      if uploaded_file.filename != '':
-           file_path = os.path.join(app.config['UPLOAD_FOLDER'], uploaded_file.filename)
-          # set the file path
-           uploaded_file.save(file_path)
-          # save the file
-      return redirect(url_for('upload'))
+# @app.route("/", methods=['POST'])
+# def uploadFiles():
+#       # get the uploaded file
+      
+#           # save the file
+#       return redirect(url_for('upload'))
+ALLOWED_EXTENSIONS = {'csv'}
+def allowed_file(filename):
+    return '.' in filename and \
+           filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
-
-
-
-@app.route('/')
-def upload_form():
-    return render_template('upload.html')
-
-@app.route('/upload', methods=['POST'])
-def upload_file():
+@app.route('/upload', methods=['GET', 'POST'])
+def upload():
+ if session.get('isauth'): 
     if request.method == 'POST':
-        file = request.files['file']
-        if file:
-            df = pd.read_csv(file)
-            c = mine(file)
+        # check if the post request has the file part        
+        name = request.form.get('name')
+        file = request.files.get('file')
+        if 'file' not in request.files:
+            flash('No file part')
+            return redirect(request.url)
+        if file.filename == '':
+            flash('No selected file')
+            return redirect(request.url)
+        if name == '' :
+           name = secure_filename(file.filename)[:15]
+
+        if file and allowed_file(file.filename):
+            filename = secure_filename(file.filename)
+            filepath = app.config['UPLOAD_FOLDER']+filename 
+            file.save(filepath)
+            session['last_upload'] = filepath
+            file_size = os.stat(filepath).st_size
+            size_mb = round(file_size / (1024 * 1024), 1)
+            size_mb_str = f"{size_mb} MB"
+            db = get_db()
+            db.add(Upload(name=name, path=filepath, size=size_mb_str))
+            db.commit()
+            db.close()
+            # flash('Successfully uploaded', 'success')
+            df = pd.read_csv(filepath)
+            c = mine(filepath,3)
             fig = visualize(c)
+           
 
             return render_template('display.html', data=df.to_html(), c=c, fig=fig.to_html())
         else:
             return redirect(url_for('upload'))
+
+    return render_template('upload.html')
+
+
+@app.route('/logout')
+def logout():
+    if session.get('isauth'):
+        session.clear()
+        flash('you have been logged out','warning')
+    return redirect('/login')
+
+
+# @app.route('/upload', methods=['POST'])
+# def upload_file():
+#     if request.method == 'POST':
+#         file = request.files['file']
+#         uploaded_file = request.files['file']
+#         if uploaded_file.filename != '':
+#             file_path = os.path.join(app.config['UPLOAD_FOLDER'], uploaded_file.filename)
+#           # set the file path
+#             uploaded_file.save(file_path)
+        
+#             df = pd.read_csv(file)
+#             c = mine(file)
+#             fig = visualize(c)
+
+#             return render_template('display.html', data=df.to_html(), c=c, fig=fig.to_html())
+#         else:
+#             return redirect(url_for('upload'))
+#     else :
+#         return render_template('upload.html')    
+
+@app.route('/forgot', methods=['GET', 'POST'])
+def forgot_password():
+    if request.method == 'POST':
+        email = request.form['email']
+        sess = get_db()
+        user = sess.query(User).filter_by(email=email).first()
+        if user:
+            token = str(uuid.uuid4())
+            expiration_date = datetime.now() + timedelta(hours=1)
+            db = get_db()
+            reset_request = PasswordResetRequest(email=email, token=token, expiration_date=expiration_date)
+            db.add(reset_request)
+            db.commit()
+            reset_link = url_for('reset_password',token=token, _external=True)
+            # Send an email containing the reset_link to the user
+            def send_email(app, msg):
+                with app.app_context():
+                         mail.send(msg)
+            Email_body=f' this is {reset_link} for password reset'
+            msg =Message()
+            msg.subject = "Password Reset Request"
+            
+            msg.recipients = [email]
+            msg.sender = 'adityakumarmishra5066@digipodium.com'
+            msg.body = Email_body
+            Thread(target=send_email, args=(app, msg)).start()
+            
+            return 'Email sent successfully'
+        else:
+            flash('Sorry! You are not registered', 'danger')
+            return redirect('/forgot')
+    return render_template('forgot.html')
+
+@app.route('/reset_password/<token>', methods=['GET', 'POST'])
+def reset_password(token):
+    sess=get_db()
+    reset_request = sess.query(PasswordResetRequest).filter_by(token=token).first()
+    if not reset_request or reset_request.expiration_date < datetime.now():
+        return "Invalid or expired token"
+    if request.method == 'POST':
+        user = sess.query(User).filter_by(email=reset_request.email).first()
+        if user:
+            user.password = request.form['password']
+            cpassword=request.form['cpassword']
+            if cpassword == user.password:
+                    
+                    sess.delete(reset_request)
+                    sess.commit()
+                    sess.close()
+                    return "Password reset successful"
+            else:
+                flash("password did not match",'danger')
+                return redirect(url_for('reset_password', token=token))
+        else:
+            
+            return "User not found"
+    return render_template('reset_password.html', token=token)
+
+@app.route('/login/button', methods=[' POST '])
+def button():
+    return render_template('button.html')
+
+
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=8000, debug=True)
