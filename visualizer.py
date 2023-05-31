@@ -1,7 +1,7 @@
 import networkx as nx
 import plotly.graph_objects as go
 
-def visualize_local_constraints(local_constraints):
+def         visualize_local_constraints(local_constraints):
     # Create an empty directed graph
     G = nx.DiGraph()
 

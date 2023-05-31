@@ -69,8 +69,6 @@ class ConstraintMining:
             return True
         return False
 
-
-
 if __name__ == "__main__":
     import visualizer as vis
     uploaded_file = "Market_Basket_Optimisation.csv"
@@ -82,4 +80,10 @@ if __name__ == "__main__":
     miner.mine_binaries()
 
     print("Local Constraints:", miner.local_constraints)
-    vis.visualize_local_constraints(miner.local_constraints)
+    fig = vis.visualize_local_constraints(miner.local_constraints)
+    fig.show()
+
+
+
+
+
