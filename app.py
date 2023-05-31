@@ -17,7 +17,6 @@ import visualizer as vis
 import plotly.graph_objects as go
 import plotly.io as pio
 
-
 app = Flask(__name__)
 app.secret_key = "the basics of life with python"
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.sqlite'
