@@ -54,7 +54,12 @@ def mine(uploaded_file = "Market_Basket_Optimisation.csv", w=3):
     return miner.local_constraints
 
 def visualize(constraint):
-    return vis.visualize_local_constraints(constraint).show()
+    return vis.visualize_local_constraints(constraint)
+
+@app.route('/get_started')
+def get_started():
+    return render_template('login.html')
+
     
 
 # @app.route('/')
@@ -334,6 +339,7 @@ def reset_password(token):
 @app.route('/login/button', methods=[' POST '])
 def button():
     return render_template('button.html')
+
 
 
 

@@ -1,20 +1,16 @@
 {% extends "base.html" %}
 {% block body %}
 
+
+<h2>Figure</h2>
+<div id="plotly-figure">{{fig|safe}}</div>
+
 <h2>Data</h2>
 {{ data|safe }}
 
-<h2>Results</h2>
-<p>{{ c }}</p>
+<!-- <h2>Results</h2>
+<p>{{ c }}</p> -->
 
-<h2>Figure</h2>
-<div id="plotly-figure"></div>
 
-<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-<script>
-  var figData = {{ fig }};
-  var plotlyFigure = document.getElementById('plotly-figure');
-  Plotly.newPlot(plotlyFigure, figData.data, figData.layout);
-</script>
 
 {% endblock %}
