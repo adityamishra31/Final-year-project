@@ -95,7 +95,7 @@ def login():
                         session['created_at'] = user.created_at
                         del sess
                         flash('hurray! Login successful.', 'success')
-                        return redirect('/upload')
+                        return redirect(url_for('upload'))
                     else:
                         flash('sorry! Email or password is wrong.', 'danger')
                 except Exception as e:
@@ -106,6 +106,7 @@ def login():
 def signup():
    
     if request.method == 'POST':
+        print(request.form)
         name = request.form.get('name')
         email = request.form.get('email')
         password = request.form.get('password')

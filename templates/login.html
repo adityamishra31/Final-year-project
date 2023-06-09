@@ -10,6 +10,14 @@
 
 {% endblock %}
 
+{% block css %}
+<style>
+  body{
+    background-color: #508bfc;
+  }
+</style>
+{% endblock %}
+
 {% block body %}
 
 <section class="vh-90" style="background-color: #508bfc;">
@@ -37,8 +45,9 @@
                 <label class="form-check-label" for="form1Example3">Remember me</label>
               </div>
 
-              <button class="btn btn-primary btn-lg btn-block  justify-content-center " type="submit">Login</button>
-
+              <a href="/upload">
+                <button class="btn btn-primary btn-lg btn-block  justify-content-center ">Login</button>
+              </a>
             </form>
 
             <hr class="my-4">

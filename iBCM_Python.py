@@ -11,7 +11,6 @@ from sklearn.tree import DecisionTreeClassifier as DT
 
 from run_iBCM import iBCM, iBCM_verify
 
-
 def run_iBCM(dataset, support, no_folds=10, no_win=1): 
     reduce_feature_space = True
     name_result_file = 'results_iBCM_Python.csv'
@@ -161,3 +160,5 @@ if __name__ == '__main__':
                 run_iBCM(dataset, support)
         except:
             pass
+
+
