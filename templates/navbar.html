@@ -21,7 +21,13 @@
                 </li>
                 
                 {% if session.isauth %}
-                <li><a class="nav-link scrollto" href="/logout">Logout</a></li>                        
+                <li><a class="nav-link scrollto" href="/upload">Upload</a></li>
+                <li><a class="nav-link scrollto" href="/logout">Logout</a></li>
+                <li><a class="nav-link scrollto" href="/login/history">history</a></li>
+
+                <li><a class="nav-link scrollto" href="/login/profile"><img src="/static/assets/img/clients/profile.png" alt="Girl in a jacket" width="50" height="50">
+                </a></li>
+
                 {% else %}
                 <li><a class="nav-link scrollto" href="/login">Login</a></li>
                 <li><a class="nav-link scrollto" href="/signup">Signup</a></li>

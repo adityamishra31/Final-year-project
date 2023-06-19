@@ -28,6 +28,7 @@ class AnnotatedTrace:
 
 class ConstraintMining:   
     def __init__(self, filename, activities, w):
+        print(f'Constraint Mining: {filename}')
         self.filename = filename
         self.activities = activities
         self.local_constraints = set()

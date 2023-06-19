@@ -1,16 +1,44 @@
 {% extends "base.html" %}
 {% block body %}
+<style>
+    @media print {
+      body, html, .container, .plotly-figure {
+          width: 100%;
+      }
+    }
+</style>
+<div class="container py-5" style="margin-top: 50px;">
+    <h2>Graph figure</h2>
+    <div class="row">
+        <div class="col" >
+            <div id="plotly-figure">{{fig|safe}}</div>
 
-
-<h2>Figure</h2>
-<div id="plotly-figure">{{fig|safe}}</div>
-
-<h2>Data</h2>
-{{ data|safe }}
-
-<!-- <h2>Results</h2>
-<p>{{ c }}</p> -->
-
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+        
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Mined Data Result</h4>
+                    <p class="card-text">Cluster Nodes and their weights</p>
+                </div>
+                <ul class="list-group list-group-flush">
+                    {% for i in c %}
+                    <li class="list-group-item">{{ i|e }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+        <div class="col">
+            <div class="d-grid gap-2 my-5">
+              <button onclick="window.print()" class="btn btn-primary">Save Report</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 
 {% endblock %}

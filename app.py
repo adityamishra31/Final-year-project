@@ -21,7 +21,7 @@ app = Flask(__name__)
 app.secret_key = "the basics of life with python"
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.sqlite'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-app.config['UPLOAD_FOLDER'] = 'static/uploads'
+app.config['UPLOAD_FOLDER'] = 'static/uploads/'
 app.config['MAIL_SERVER'] = 'mail.digipodium.com'
 app.config['MAIL_PORT'] = 465
 app.config['MAIL_USE_SSL'] = True
@@ -154,6 +154,31 @@ def profile():
     return render_template('profile.html')
 
 
+@app.route('/login/history')
+def history():
+    db = get_db()
+    uploads = db.query(Upload).filter_by(added_by=session.get('id')).all()
+    db.close()
+    print(f'uploads: {uploads}')
+    return render_template('history.html', uploads=uploads)
+
+@app.route('/delete/<int:id>')
+def delete(id):
+    try:
+        db = get_db()
+        upload = db.query(Upload).filter_by(id=id).first()
+        try:
+            os.unlink(upload.path)
+        except:
+            pass
+        db.delete(upload)
+        db.commit()
+        db.close()
+        flash('File deleted successfully.', 'success')
+    except Exception as e:
+        flash('error file not found', 'danger')
+    
+    return redirect(url_for('history'))
 
 # @app.route('/upload', methods=['POST'])
 # def upload_file():
@@ -186,7 +211,7 @@ def profile():
 
 
 # Upload folder
-UPLOAD_FOLDER = 'static/files'
+UPLOAD_FOLDER = 'static/files/'
 app.config['UPLOAD_FOLDER'] =  UPLOAD_FOLDER
 
 
@@ -235,16 +260,15 @@ def upload():
             size_mb = round(file_size / (1024 * 1024), 1)
             size_mb_str = f"{size_mb} MB"
             db = get_db()
-            db.add(Upload(name=name, path=filepath, size=size_mb_str))
+            db.add(Upload(name=name, path=filepath, size=size_mb_str, added_by=session.get('id')))
             db.commit()
             db.close()
             # flash('Successfully uploaded', 'success')
+            print(f'File {filename} saved to {filepath}')
             df = pd.read_csv(filepath)
             c = mine(filepath,3)
             fig = visualize(c)
-           
-
-            return render_template('display.html', data=df.to_html(), c=c, fig=fig.to_html())
+            return render_template('display.html', data=df.to_html(), c=list(c)[:10], fig=fig.to_html())
         else:
             return redirect(url_for('upload'))
 
@@ -340,6 +364,7 @@ def reset_password(token):
 @app.route('/login/button', methods=[' POST '])
 def button():
     return render_template('button.html')
+
 
 
 

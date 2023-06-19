@@ -29,7 +29,7 @@
 </style>
 {% endblock %}
 {% block body %}
-{% if files %}
+{% if uploads %}
       <h1>File Upload History</h1>
       <table >
         <thead class="datashow">
@@ -41,13 +41,13 @@
           </tr>
         </thead>
         <tbody >
-          {% for file in files %}
+          {% for file in uploads %}
             <tr>
               <td>{{ file.name }}</td>
               <td class="data">{{ file.created_at.strftime('%Y-%m-%d %H:%M:%S') }}</td>
               <td class="data">{{ file.size }}</td>
-              <td class="deleter"><button class="btn btn-danger"> <img src="/static/images/close.png" class="rounded-circle" style=" height: 25px; width:25px;"
-                alt="delete"></button></td>
+              <td class="deleter"><a href="/delete/{{file.id}}" class="btn btn-danger"> <img src="/static/assets/img/clients/close.png" class="rounded-circle" style=" height: 25px; width:25px;"
+                alt="delete"></a></td>
             </tr>
           {% endfor %}
         </tbody>

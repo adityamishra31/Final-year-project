@@ -30,10 +30,11 @@ def visualize_local_constraints(local_constraints):
     fig.add_trace(go.Scatter(
         x=node_x,
         y=node_y,
-        mode='markers',
-        marker=dict(size=5),
+        mode='text',
+        marker=dict(size=15),
         text=nodes,
-        hoverinfo='text'
+        textfont=dict(color='Green', size=25),
+        hoverinfo=f'text',
     ))
 
     # Add trace for edges
@@ -51,8 +52,8 @@ def visualize_local_constraints(local_constraints):
         x=edge_x,
         y=edge_y,
         mode='lines',
-        line=dict(width=1),
-        hoverinfo=None
+        line=dict(width=1, dash='dot', color='grey'),
+        hoverinfo='none',
     ))
 
     # Add text annotations for edge labels
@@ -61,7 +62,7 @@ def visualize_local_constraints(local_constraints):
             go.layout.Annotation(
                 x=(pos[edge[0]][0] + pos[edge[1]][0]) / 2,
                 y=(pos[edge[0]][1] + pos[edge[1]][1]) / 2,
-                text=str(G.edges[edge]['weight']),
+                text='',
                 showarrow=False,
                 font=dict(color='green')
             ) for edge in G.edges
@@ -71,6 +72,7 @@ def visualize_local_constraints(local_constraints):
     # Set the layout
     fig.update_layout(
         showlegend=False,
+        height=700,
         hovermode='closest',
         margin=dict(b=20, l=5, r=5, t=40),
         xaxis=dict(showgrid=False, zeroline=False, showticklabels=False),

@@ -54,14 +54,14 @@
 
 {% block body %}
 <div class="profile-container">
-    <img src="/static/images/man.png" alt="Profile Picture">
+    <img src="/static/assets/img/clients/profile.png" alt="Profile Picture">
     <h1>{{session['name']}}</h1>
     <p class="job-title">You Joined Us On - {{ session['created_at']}}</p>
     
     <ul class="contact-info">
-      <li><i class="fas fa-envelope"></i>{{session['email']}}</li> <i class="bi bi-pen"></i>
-      <li><i class="fas fa-phone"></i> (123) 456-7890</li>
-      <li><i class="fas fa-globe"></i> www.johnsmith.com</li>
+      <li><i class="fas fa-envelope"></i>{{session['email']}}</li> 
+      <li><i class="fas fa-phone"></i>(+91) 9839076643</li>
+      <li><i class="fas fa-globe"></i> www.snehagupta.com</li>
     </ul>
     <div class="form-inline">
         <a href="#"><button type="button" class="btn btn-light">edit</button></a>
